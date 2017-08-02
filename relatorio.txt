@@ -1,0 +1,111 @@
+Grupo 16
+Luís Neto 78403
+Manuel Santos 78445
+
+----- Introdução -----
+
+Para este projeto escolheu-se utilizar a linguagem Python por ser uma linguagem de alto nível e conhecida por ambos os elementos do grupo.
+
+----- Normalização dos textos -----
+
+Para a normalização de todos os textos foi criada uma função (Python) que percorre cada ficheiro dos corpora e aplica o espaçamento.
+Foi necesário ter especial cuidado para determinados sinais de pontuação ("--" para diálogo e reticências), visto serem sinais de pontuação que se econtram seguidos.
+Esta normalização substitui todos os textos originais por textos normalizados (adição de _norm ao nome do ficheiro).
+
+----- Cálculo de unigramas e bigramas -----
+
+A contagem de unigramas e bigramas foi feita depois da normalização para cada um dos 6 autores.
+A contagem foi feita por uma função em Python.
+O alisamento escolhido foi o de Laplace (add-one), por ser de fácil implementação.
+
+----- Experiência 1 -----
+
+Na primeira experiência realizada aplicou-se o método de Laplace (add-one) aos bigramas e unigramas calculados por cada um dos autores.
+
+Para a pasta de 500 palavras chegou-se aos seguintes resultados:
+
+text1.txt:
+A probabilidade de ser Jose Saramago é de 5.43E-2066
+O algoritmo escolheu acertadamente o texto de José Saramago.
+
+text2.txt:
+A probabilidade de ser Almada Negreiros é de 3.97E-1976
+O algoritmo escolheu acertadamente o texto de Almada Negreiros.
+
+text3.txt:
+A probabilidade de ser Luisa Marques Silva é de 2.17E-1897
+O algoritmo escolheu o texto de Luisa Marques Silva.
+
+text4.txt
+Eca De Queiros 2.61E-2217
+Luisa Marques Silva 1.64E-2195
+O algoritmo escolheu erradamente o texto de Luisa Marques Silva.
+
+text5.txt
+Camilo Castelo Branco 8.93E-2444
+Luisa Marques Silva 2.24E-2278
+O algoritmo escolheu erradamente Luisa Marques Silva.
+
+text6.txt
+Jose Rodrigues Santos 3.77E-2079
+O algoritmo escolheu acertadamente o texto de Jose Rodrigues dos Santos.
+
+Para a pasta de 1000 palavras chegou-se aos seguintes resultados:
+
+text1.txt:
+Jose Saramago 1.69E-4214
+O algoritmo escolheu acertadamente o texto.
+
+text2.txt:
+Almada Negreiros 6.85E-3832
+Luisa Marques Silva 3.16E-3829
+O algoritmo escolheu erradamente Luisa Marques Silva.
+
+text3.txt
+Luisa Marques Silva 2.78E-4051
+O algoritmo escolheu acertadamente.
+
+text4.txt
+Eca De Queiros 5.41E-4618
+Luisa Marques Silva 6.05E-4548
+O algoritmo escolheu erradamente Luisa Marques Silva.
+
+text5.txt
+Camilo Castelo Branco 7.26E-4970
+Luisa Marques Silva 5.18E-4620
+O algoritmo escolheu erradamente Luisa Marques Silva.
+
+text6.txt
+Jose Rodrigues Santos 8.75E-4137
+O algoritmo escolheu acertadamente.
+
+Conclui-se assim que o algoritmo de cálculo de probabilidades com unigramas e bigramas com alisamento Laplace acertou em 4 dos 6 textos de 500 palavras e 3 dos 6 textos de 1000 palavras.
+Note-se que todos os textos que foram errados pelo algoritmo atribuíram o texto a Luisa Marques Silva.
+Isto deve-se ao facto de todos os textos de Marques Silva terem um número reduzido de palavras. Aquando da aplicação do algoritmo de alisamento Laplace, os resultados não são tão inflacionados como os restantes, visto que pela fórmula, o denominador é somado pelo número de palavras diferentes do vocabulário.
+
+----- Experiência 2 -----
+
+Para a segunda experiência calculou-se o número médio de palavras por frase de cada autor. Segue-se a seguinte lista da média de cada autor:
+
+José Rodrigues dos Santos: 14.08
+José Saramago: 40.00
+Almada Negreiros: 15.56
+Luísa Marques Silva: 14.60
+Camilo Castelo Branco: 15.92
+Eça de Queiros: 18.74
+
+Conclui-se que as médias para todos os autores são bastante idênticas exceto para o autor José Saramago.
+Desta forma, o algoritmo acerta facilmente em todos os textos de Saramago. No entanto, devido à proximidade das médias dos restantes autores torna-se difícil ser preciso na escolha do autor.
+Assim sendo, nesta experiência o algoritmo acertou nos dois textos de Saramago na pasta de 500 e 1000 palavras e acertou no texto de Eça de Queiros do ficheiro de 1000 palavras. O texto de Eça foi acertado porque dos 5 autores com uma média idêntica, Queirós é o que mais se distancia dos restantes.
+
+----- Experiência 3 -----
+
+Para a última experiência, ordenou-se numa lista cada um dos unigramas dos 6 autores da palavra mais frequente até à menos frequente.
+De seguida percorreu-se cada palavra dos textos de teste e atribuiu-se um valor a cada palavra.
+O valor atribuído a cada palavra foi o índice da palavra na lista, ou seja, a palavra mais frequente tem a pontuação 0.
+Foi posto um limite de 500 pontos a cada palavra.
+Deste modo, o algoritmo dá menor pontuação às palavras mais frequentes de cada um dos autores.
+O autor com menor pontuação final é atribuído ao texto em questão.
+
+Depois de correr o programa verificou-se que o algoritmo acertou nos autores de todos os textos de 500 e 1000 palavras.
+Este algoritmo mostrou-se ser bastante eficiente, pois dá prioridade às palavras mais usadas dos autores.
